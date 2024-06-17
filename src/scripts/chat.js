@@ -40,6 +40,11 @@ class Chatroom {
         });
       });
   }
+
+  //*   metoda update username:
+  updateName(username) {
+    this.username = username;
+  }
 }
 
 const chatroom = new Chatroom('general', 'shaun');

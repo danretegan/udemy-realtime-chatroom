@@ -28,18 +28,21 @@ class Chatroom {
 
   //* metoda getChats (actualizeaza in timp real mesajele):
   getChats(callback) {
-    this.chats.onSnapshot(snapshot => {
-      snapshot.docChanges().forEach(elem => {
-        if (elem.type === 'added') {
-          //* update the UI:
-          callback(elem.doc.data());
-        }
+    this.chats
+      .where('room', '==', this.room)
+      .orderBy('created_at')
+      .onSnapshot(snapshot => {
+        snapshot.docChanges().forEach(elem => {
+          if (elem.type === 'added') {
+            //* update the UI:
+            callback(elem.doc.data());
+          }
+        });
       });
-    });
   }
 }
 
-const chatroom = new Chatroom('gaming', 'shaun');
+const chatroom = new Chatroom('general', 'shaun');
 
 chatroom.getChats(data => {
   console.log(data);

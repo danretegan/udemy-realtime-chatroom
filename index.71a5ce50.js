@@ -1,2 +1,0 @@
-new class{constructor(e,t){this.room=e,this.username=t,this.chats=db.collection("chats")}async addChat(e){const t=new Date,a={message:e,username:this.username,room:this.room,created_at:firebase.firestore.Timestamp.fromDate(t)};return await this.chats.add(a)}getChats(e){this.chats.where("room","==",this.room).orderBy("created_at").onSnapshot((t=>{t.docChanges().forEach((t=>{"added"===t.type&&e(t.doc.data())}))}))}}("general","shaun").getChats((e=>{console.log(e)}));
-//# sourceMappingURL=index.71a5ce50.js.map

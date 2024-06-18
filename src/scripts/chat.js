@@ -45,6 +45,7 @@ export class Chatroom {
   //*   metoda update username:
   updateName(username) {
     this.username = username;
+    localStorage.setItem('username', username);
   }
 
   //*   update the chatroom:

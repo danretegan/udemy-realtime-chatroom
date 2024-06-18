@@ -41,9 +41,12 @@ newNameForm.addEventListener('submit', e => {
   }, 3000);
 });
 
+//! check local stoarege for a username:
+const username = localStorage.username ? localStorage.username : 'Anonimus';
+
 //! class instances:
 const chatUI = new ChatUI(chatList);
-const chatroom = new Chatroom('general', 'shaun');
+const chatroom = new Chatroom('general', username);
 
 //! get the chats and render:
 chatroom.getChats(data => {

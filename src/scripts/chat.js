@@ -3,7 +3,7 @@
 // TODO updating the username
 // TODO updating the room
 
-class Chatroom {
+export class Chatroom {
   constructor(room, username) {
     this.room = room;
     this.username = username;
@@ -56,16 +56,3 @@ class Chatroom {
     }
   }
 }
-
-const chatroom = new Chatroom('general', 'shaun');
-
-chatroom.getChats(data => {
-  console.log(data);
-});
-
-setTimeout(() => {
-  chatroom.updateRoom('gaming');
-  chatroom.updateName('DAN');
-  chatroom.getChats(data => console.log(data));
-  chatroom.addChat('HELLO FROM NEW CHATROOM!');
-}, 3000);

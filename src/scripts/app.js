@@ -6,6 +6,7 @@ const chatList = document.querySelector('.chat-list');
 const newChatForm = document.querySelector('.new-chat');
 const newNameForm = document.querySelector('.new-name');
 const upadateMssg = document.querySelector('.update-mssg');
+const rooms = document.querySelector('.chat-rooms');
 
 //! add a new chat:
 newChatForm.addEventListener('submit', e => {
@@ -39,6 +40,18 @@ newNameForm.addEventListener('submit', e => {
   setTimeout(() => {
     upadateMssg.innerText = '';
   }, 3000);
+});
+
+//! update the chat room:
+rooms.addEventListener('click', e => {
+  // console.log(e);
+  if (e.target.tagName === 'BUTTON') {
+    chatUI.clear();
+    chatroom.updateRoom(e.target.getAttribute('id'));
+    chatroom.getChats(chat => {
+      chatUI.render(chat);
+    });
+  }
 });
 
 //! check local stoarege for a username:

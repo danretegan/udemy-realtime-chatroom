@@ -6,6 +6,12 @@ export class ChatUI {
     this.list = list;
   }
 
+  //! metoda clear messages list:
+  clear() {
+    this.list.innerHTML = '';
+  }
+
+  //! metoda render:
   render(data) {
     const when = dateFns.distanceInWordsToNow(data.created_at.toDate(), {
       addSuffix: true,
